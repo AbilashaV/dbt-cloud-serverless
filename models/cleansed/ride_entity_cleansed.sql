@@ -78,3 +78,4 @@ select
     mdd,
     rider_penalized_amount
 from {{ ref("src_ride_entity") }} 
+limit 1000
