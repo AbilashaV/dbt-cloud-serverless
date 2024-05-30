@@ -1,4 +1,4 @@
-{{config(materialized='table')}}
+--{{config(materialized='table')}}
 
 select
     id as ride_id,
