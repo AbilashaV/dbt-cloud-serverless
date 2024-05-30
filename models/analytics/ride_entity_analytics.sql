@@ -1,3 +1,5 @@
+{{config(materialized='table')}}
+
 select
     ride_id,
     (assign_time_utc + interval '1 hour' * rg.timezone) as assign_time_local,
