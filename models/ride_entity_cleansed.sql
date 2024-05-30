@@ -13,7 +13,7 @@ city,
 company_id,
 coupon_code,
 create_time as create_time_utc,
-credit_card_id 
+credit_card_id, 
 currency,
 --destination_point?
 discount,
@@ -99,13 +99,13 @@ rider_cancellation_reward,
 driver_cancellation_reward,
 --driver_point_payment_amount,
 --driver_point_transaction_id
-reservation_ride_start_time as reservation_ride_start_time_utc
+reservation_ride_start_time as reservation_ride_start_time_utc,
 reservation_fee,
 driver_penalty_fee,
 --ride_type_data
 rider_system_fee_tax,
 driver_system_fee_tax,
-creator_system_fee
+creator_system_fee,
 creator_system_fee_tax,
 pick_up_h3_res15,
 destination_h3_res15,
@@ -118,6 +118,5 @@ confirm_time as confirm_time_utc,
 payment_item_uuid,
 mdd,
 rider_penalized_amount
-From    
 FROM
     "dev"."prod_test"."ride_entity"
