@@ -1,6 +1,6 @@
 select
-    r.id as ride_id,
-    assign_time as assing_time_utc,
+    id as ride_id,
+    assign_time as assign_time_utc,
     cancel_reason,
     cancel_reason_type,
     car_type,
