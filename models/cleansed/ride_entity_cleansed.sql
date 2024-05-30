@@ -74,5 +74,5 @@ select
     confirm_time as confirm_time_utc,
     payment_item_uuid,
     mdd,
-    rider_penalized_amount,
+    rider_penalized_amount
 from {{ ref("src_ride_entity") }} 
