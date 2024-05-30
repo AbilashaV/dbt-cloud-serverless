@@ -50,7 +50,7 @@ driver_system_fee,
 rider_system_fee,
 destination_h3_address,
 pick_up_h3_address,
-creator_info?
+creator_info,
 creator_uuid,
 estimated_pick_up_distance_km,
 accident,
