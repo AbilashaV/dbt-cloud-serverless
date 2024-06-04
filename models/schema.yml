@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: ride_entity_cleansed
-    description: Ride information; one row is one ride
+  - name: c_ride_entity
+    description: Cleaned ride entity table with Ride information; - local time added; numeric formats are aligned with 2 decimals, only those fields which are majorly used.  
     columns:
       - name: ride_id
         description: primary key
