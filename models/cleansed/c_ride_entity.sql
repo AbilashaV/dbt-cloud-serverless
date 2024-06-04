@@ -42,6 +42,7 @@ select
     ride_status,
     rider_application_fee::NUMERIC(10, 2) as rider_application_fee,
     rider_info,
+    driver_uuid,
     rider_uuid,
     sd,
     start_time::timestamp as start_time_utc,

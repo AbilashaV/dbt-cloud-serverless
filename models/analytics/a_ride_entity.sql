@@ -34,6 +34,7 @@ select
     rider_application_fee,
     rider_info,
     rider_uuid,
+    driver_uuid,
     sd,
     start_time_local,
     toll_fee,
