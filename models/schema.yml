@@ -16,4 +16,8 @@ models:
         description: primary key
         tests:
           - not_null
+      - name: drof_off_time_utc
+        description: primary key
+        tests:
+          - not_null
  
