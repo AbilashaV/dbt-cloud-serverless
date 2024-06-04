@@ -1,5 +1,4 @@
---{{config(materialized='table')}}
-
+-- {{config(materialized='table')}}
 select
     id as ride_id,
     assign_time::timestamp as assign_time_utc,
@@ -78,6 +77,6 @@ select
     payment_item_uuid,
     mdd,
     rider_penalized_amount
---from {{ ref("src_ride_entity") }} 
+-- from {{ ref("src_ride_entity") }} 
 from {{ ref("src_ride_entity") }} r
 join {{ ref("regions") }} rg on r.region = rg.country
