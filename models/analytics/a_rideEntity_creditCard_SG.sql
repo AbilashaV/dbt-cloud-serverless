@@ -1,3 +1,5 @@
+{{config(materialized='table')}}
+
 select
     car_type,
     coupon_code,
@@ -33,7 +35,6 @@ select
     toll_fee,
     cce.customer_id,
     cce.gateway,
-    cce.credit_card_id,
     cce.created_at_utc,
     cce.user_uuid,
     cce.uuid
