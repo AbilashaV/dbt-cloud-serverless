@@ -10,20 +10,20 @@ select
     (tr.updated_at::timestamp + interval '1 hour' * rg.timezone) as updated_at_local,
     -- last_event_id,
     account_model,
-    amount::NUMERIC(10, 2) as amount,
+    cast(amount as float) as amount,
     channel,
     -- channel_account_name
     -- channel_identifier?
     -- channel_name
     currency,
     -- description
-    discount::NUMERIC(10, 2) as discount,
+    CAST(discount As float) as discount,
     fraud,
     payment_method,
     tr.region,
     tr.status,
     type,
-    unpaid_amount::NUMERIC(10, 2) as unpaid_amount
+    cast(unpaid_amount AS float) as unpaid_amount
 -- cash_out_synced_on_shb
 -- shb_detached
 -- admin_topup_category

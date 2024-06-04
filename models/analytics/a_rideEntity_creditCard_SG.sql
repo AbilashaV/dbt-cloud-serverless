@@ -1,7 +1,7 @@
 select
     car_type,
     coupon_code,
-    create_time_local,
+    DATE_TRUNC('day', create_time_local) AS trip_day,
     creator_system_fee,
     creator_system_fee_tax,
     re.credit_card_id,
@@ -32,9 +32,8 @@ select
     rider_uuid,
     toll_fee,
     cce.customer_id,
-    cce.source_id,
     cce.gateway,
-    credit_card_id,
+    cce.credit_card_id,
     cce.created_at_utc,
     cce.user_uuid,
     cce.uuid
@@ -43,12 +42,4 @@ left join
     {{ ref("c_credit_card_entity") }} cce
     on (re.credit_card_id = cce.credit_card_id or re.payment_item_uuid = cce.uuid)
 where re.payment_method = 5 and re.ride_status = 70 and re.region = 'SG'
-group by
-    trip_day,
-    re.id,
-    re.rider_uuid,
-    cce.customer_id,
-    cce.source_id,
-    cce.gateway,
-    re.pay_status,
-    re.ride_status
+
