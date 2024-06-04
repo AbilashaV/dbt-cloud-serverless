@@ -3,6 +3,7 @@
 select
     id as ride_id,
     assign_time::timestamp as assign_time_utc,
+    (assign_time::timestamp + interval '1 hour' * rg.timezone) as assign_time_local,
     cancel_reason,
     cancel_reason_type,
     car_type,
@@ -77,4 +78,6 @@ select
     payment_item_uuid,
     mdd,
     rider_penalized_amount
-from {{ ref("src_ride_entity") }} 
+--from {{ ref("src_ride_entity") }} 
+from {{ ref("src_ride_entity") }} r
+join {{ ref("regions") }} rg on r.region = rg.country

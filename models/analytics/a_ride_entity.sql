@@ -82,6 +82,6 @@ select
     mdd,
     rider_penalized_amount
 
-from {{ ref("ride_entity_cleansed") }} r
+from {{ ref("c_ride_entity") }} r
 join {{ ref("regions") }} rg on r.region = rg.country
-where region= 'SG'
+--where region= 'SG'
