@@ -1,9 +1,9 @@
 {{config(materialized='table')}}
 
 select
+    DATE_TRUNC('day', create_time_local) AS trip_day,
     car_type,
     coupon_code,
-    DATE_TRUNC('day', create_time_local) AS trip_day,
     creator_system_fee,
     creator_system_fee_tax,
     re.credit_card_id,
@@ -38,7 +38,7 @@ select
     cce.created_at_utc,
     cce.user_uuid,
     cce.uuid
-from {{ ref("a_ride_entity") }} re
+from {{ ref("c_ride_entity") }} re
 left join
     {{ ref("c_credit_card_entity") }} cce
     on (re.credit_card_id = cce.credit_card_id or re.payment_item_uuid = cce.uuid)
