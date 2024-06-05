@@ -49,7 +49,7 @@ with
             pay_status,
             ride_status,
             bse.idempotency_key as ride_key
-        from {{ ref("a_rideEntity_creditCard_SG") }} rec
+        from {{ ref("a_ride_entity_credit_card_sg") }} rec
         left join {{ ref("c_transactions") }} bse on (ride_id = bse.idempotency_key)
         where
             rec.payment_method = 5
