@@ -1,7 +1,7 @@
 {{config(materialized='table')}}
 
 select
-    DATE_TRUNC('day', create_time_local) AS trip_day,
+    create_time_local,
     car_type,
     coupon_code,
     creator_system_fee,
@@ -35,7 +35,7 @@ select
     toll_fee,
     cce.customer_id,
     cce.gateway,
-    cce.created_at_utc,
+    --cce.created_at_utc,
     cce.user_uuid,
     cce.uuid
 from {{ ref("c_ride_entity") }} re

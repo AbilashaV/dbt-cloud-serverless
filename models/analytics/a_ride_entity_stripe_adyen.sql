@@ -6,7 +6,7 @@ with
             ride_id,
             rider_uuid,
             customer_id,
-            trip_day,
+            create_time_local,
             sum(
                 (
                     (
@@ -56,7 +56,7 @@ with
             and ride_status = 70
             and rec.region = 'SG'
         group by
-            trip_day,
+            create_time_local,
             ride_id,
             rider_uuid,
             customer_id,
@@ -67,7 +67,7 @@ with
     )
 
 select
-    trip_day,
+    create_time_local,
     ride_id,
     rider_uuid,
     customer_id,
