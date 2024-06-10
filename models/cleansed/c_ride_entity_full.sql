@@ -95,5 +95,3 @@ select
 -- from {{ ref("src_ride_entity") }} 
 from {{ ref("src_ride_entity") }} r
 join {{ ref("regions") }} rg on r.region = rg.country
-WHERE 
-    EXTRACT(YEAR FROM create_time::timestamp) = 2024

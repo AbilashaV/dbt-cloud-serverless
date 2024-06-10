@@ -1,4 +1,5 @@
-{{config(materialized='table')}}
+{{ config(materialized="table") }}
+
 
 select
     create_time_local,
@@ -13,7 +14,7 @@ select
     driver_cancellation_reward,
     driver_system_fee,
     driver_system_fee_tax,
-    re.driver_uuid,
+    driver_uuid,
     drop_off_time_local,
     estimated_price,
     etc_fee,
@@ -33,14 +34,16 @@ select
     rider_system_fee_tax,
     rider_uuid,
     toll_fee,
+    total_amount_to_receive,
+    total_amount_owed_to_drivers,
     cce.customer_id,
     cce.gateway,
-    --cce.created_at_utc,
+    cce.created_at_utc,
     cce.user_uuid,
     cce.uuid
-from {{ ref("c_ride_entity") }} re
+
+from {{ ref("a_ride_entity_sg_finance") }} re
 left join
     {{ ref("c_credit_card_entity") }} cce
     on (re.credit_card_id = cce.credit_card_id or re.payment_item_uuid = cce.uuid)
-where re.payment_method = 5 and re.ride_status = 70 and re.region = 'SG'
-
+where re.payment_method = 5 and re.ride_status = 70
