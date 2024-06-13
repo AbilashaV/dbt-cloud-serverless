@@ -1,4 +1,4 @@
-{{config(materialized='table')}}
+--{{config(materialized='table')}}
 
 select
     r.id as ride_id,
@@ -93,7 +93,7 @@ select
     mdd,
     rider_penalized_amount::NUMERIC(10, 2) as rider_penalized_amount
 -- from {{ ref("src_ride_entity") }} 
-from {{ ref("src_ride_entity") }} r
+from {{ ref("stg_ride_entity") }} r
 join {{ ref("regions") }} rg on r.region = rg.country
 WHERE 
     EXTRACT(YEAR FROM create_time::timestamp) = 2024

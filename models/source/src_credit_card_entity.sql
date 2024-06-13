@@ -1,1 +1,0 @@
-SELECT * FROM "dev"."prod_test"."credit_card_entity"

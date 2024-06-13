@@ -32,6 +32,6 @@ select
 -- external_transaction_id
 -- display_description_key
 -- metadata
-from {{ ref("src_transactions") }} tr
+from {{ ref("stg_transactions") }} tr
 join {{ ref("regions") }} rg on tr.region = rg.country
 

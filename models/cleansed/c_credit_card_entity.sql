@@ -29,5 +29,5 @@ uuid
 --auth_flow_type
 --bin
 --corporate_id
-from {{ ref("src_credit_card_entity")}} 
+from {{ ref("stg_credit_card_entity")}} 
 --join {{ ref("regions") }} rg on cce.country = rg.country
