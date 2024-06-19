@@ -96,7 +96,6 @@ select
     payment_item_uuid,
     mdd,
     rider_penalized_amount::numeric(10, 2) as rider_penalized_amount
--- from {{ ref("src_ride_entity") }} 
 from {{ ref("stg_ride_entity") }} r
 join {{ ref("ref_regions") }} rg on r.region = rg.country
 left join {{ ref("ref_ride_status") }} rs on r.ride_status = rs.value

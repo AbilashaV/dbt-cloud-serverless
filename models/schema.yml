@@ -1,1 +1,47 @@
+version: 2
 
+models:
+  - name: stg_ride_entity
+    description: Raw ride entity table with Ride information; no formatting 
+    columns:
+      - name: id
+        description: primary key for ride
+        tests:
+          - unique
+          - not_null
+      - name: ride_status
+        description: ride status 
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['10','12','15','20','40','50','55','60','65','70','100','300','310','400']
+      - name: create_time
+        description: datetime of the ride creation; in utc
+        tests:
+          - not_null
+      - name: drop_off_time 
+        description: datetime of the drop off for completed ride else shows datetime of cancellation; n utc
+        tests:
+          - not_null
+ 
+
+  - name: c_ride_entity
+    description: Cleaned ride entity table with Ride information; - local time added; numeric formats are aligned with 2 decimals, only those fields which are majorly used.  
+    columns:
+      - name: ride_id
+        description: primary key
+        tests:
+          - unique
+          - not_null
+      - name: ride_status
+        tests:
+          - not_null
+      - name: create_time_utc
+        description: primary key
+        tests:
+          - not_null
+      - name: drop_off_time_utc
+        description: primary key
+        tests:
+          - not_null
+ 
