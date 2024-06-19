@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: ride_
+    database: dev
+    schema: prod_test
+    tables:
+      - name: ride_entity  
+      - name: credit_card_entity
+      - name: transactions
+
+        
