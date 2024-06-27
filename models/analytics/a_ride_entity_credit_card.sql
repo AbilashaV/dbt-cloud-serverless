@@ -1,4 +1,10 @@
-{{ config(materialized="table") }}
+{{ 
+    config(
+        materialized='incremental',
+        unique_key ='ride_id'
+        ) 
+}}
+
 
 select
     create_time_local,
@@ -53,5 +59,11 @@ re.payment_method = 'CREDITCARD'
 and re.region ='SG'
 and re.ride_status = 'FINISHED'
 and EXTRACT(YEAR FROM create_time_local::timestamp) = 2024 
---and EXTRACT(MONTH FROM create_time_local::timestamp) = 4
+and EXTRACT(MONTH FROM create_time_local::timestamp) = 5
 
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  -- (uses >= to include records whose timestamp occurred since the last run of this model)
+  where create_time_local >= (select max(create_time_local)from {{ this }})
+{% endif %}
