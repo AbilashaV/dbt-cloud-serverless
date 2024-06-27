@@ -1,6 +1,5 @@
 {{ config(materialized="table") }}
 
-
 select
     create_time_local,
     car_type,
@@ -51,3 +50,6 @@ where
 re.payment_method = 'CREDITCARD' 
 and re.region ='SG'
 and re.ride_status = 'FINISHED'
+and EXTRACT(YEAR FROM create_time_local::timestamp) = 2024 
+--and EXTRACT(MONTH FROM create_time_local::timestamp) = 4
+

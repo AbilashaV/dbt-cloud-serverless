@@ -6,6 +6,7 @@ sources:
     schema: prod_test
     tables:
       - name: ride_entity  
+      - name: ride_entity_0619
       - name: credit_card_entity
       - name: transactions
 

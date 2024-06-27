@@ -1,5 +1,9 @@
-{{ config(materialized="table") }}
-
+{{ 
+    config(
+        materialized='incremental',
+        unique_key ='account_id'
+        ) 
+}}
 
 select
     account_id,
@@ -34,4 +38,12 @@ select
 -- metadata
 from {{ ref("stg_transactions") }} tr
 join {{ ref("ref_regions") }} rg on tr.region = rg.country
+
+
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  -- (uses >= to include records whose timestamp occurred since the last run of this model)
+  where created_at_utc >= (select max(created_at_utc)from {{ this }})
+{% endif %}
 

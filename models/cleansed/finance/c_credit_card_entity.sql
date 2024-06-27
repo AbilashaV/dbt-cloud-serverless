@@ -1,4 +1,9 @@
-{{config(materialized='table')}}
+{{ 
+    config(
+        materialized='incremental',
+        unique_key ='credit_card_id'
+        ) 
+}}
 
 Select 
 id as credit_card_id,
@@ -30,3 +35,10 @@ uuid
 --bin
 --corporate_id
 from {{ ref("stg_credit_card_entity")}} 
+
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  -- (uses >= to include records whose timestamp occurred since the last run of this model)
+  where created_at_utc >= (select max(created_at_utc)from {{ this }})
+{% endif %}

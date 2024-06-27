@@ -1,0 +1,32 @@
+{% docs ride_status %}
+
+| name                        | value |
+|-----------------------------|-------|
+| NOT_MATCHED                 | 10    |
+| MATCHED                     | 12    |
+| CONFIRMED                   | 15    |
+| PENDING                     | 20    |
+| ASSIGNED                    | 40    |
+| PICKUP                      | 50    |
+| PICKUP_ARRIVED              | 55    |
+| INUSE                       | 60    |
+| INUSE_WITH_CANCEL_PENDING   | 65    |
+| FINISHED                    | 70    |
+| USER_CANCELED               | 100   |
+| COMPANY_CANCELED            | 300   |
+| DRIVER_CANCELED             | 310   |
+| EXPIRED                     | 400   |
+
+{% enddocs %}
+
+{% docs ride_type %}
+
+| value | name               |
+|-------|--------------------|
+| 0     | STREET HAILING     |
+| 10    | BASE RIDE          |
+| 100   | DELIVERY           |
+| 20    | ADVANCED BOOKING   |
+| 1     | CAR METER RIDE     |
+
+{% enddocs %}
