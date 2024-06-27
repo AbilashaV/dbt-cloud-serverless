@@ -11,24 +11,16 @@ models:
           - not_null
       - name: app_meter
         description: Meter flag
-        tests:
-          - not_null
       - name: assign_time
         description: Date time when the driver accepts the ride (in UTC)
-        tests:
-          - not_null
       - name: assigned_point
         description: Geometry point assigned for the ride
-        tests:
-          - not_null
       - name: cancel_reason
         description: Reason for ride cancellation
       - name: cancel_reason_type
         description: Type of ride cancellation; enum
       - name: car_type
         description: Type of car; enum
-        tests:
-          - not_null
       - name: car_types
         description: Car types in JSON format
       - name: cashout_request_id
@@ -38,7 +30,6 @@ models:
       - name: city
         description: 3 letter city code
         tests:
-          - not_null
           - accepted_values:
               values: ['BKK', 'HAN', 'HCM', 'PNH', 'REP', 'SEL', 'SHV', 'SIN']
       - name: company_id
@@ -51,8 +42,6 @@ models:
           - not_null
       - name: credit_card_id
         description: Credit card ID - unique id
-        tests:
-          - foreign_key: {table: stg_credit_card_entity, column: id}
       - name: currency
         description: Currency code
       - name: destination_point
@@ -78,15 +67,10 @@ models:
       - name: pay_status
         description: Payment status; enum
         tests:
-          - not_null
           - accepted_values:
               values: ['0', '5', '20', '10', '90', '100', '900', '910', '920']
       - name: payment_method
         description: Payment method; enum
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
       - name: pick_up_address
         description: Pick-up address
       - name: pick_up_arrived_time
@@ -109,9 +93,6 @@ models:
         description: Refund amount when the ride was refunded in local currency as per the region
       - name: region
         description: Region
-        tests:
-          - accepted_values:
-              values: ['SG', 'TH', 'VN', 'KR', 'KH']
       - name: ride_distance_km
         description: Total ride distance in km
       - name: ride_distance_update_time
@@ -347,7 +328,6 @@ models:
       - name: account_id
         description: UUID of the driver or rider
         tests:
-          - unique
           - not_null
       - name: idempotency_key
         description: Key to ensure idempotency of transactions

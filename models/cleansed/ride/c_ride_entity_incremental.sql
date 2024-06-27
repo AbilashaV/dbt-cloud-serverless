@@ -93,7 +93,7 @@ select
     (confirm_time::timestamp + interval '1 hour' * rg.timezone) as confirm_time_local,
     payment_item_uuid,
     mdd,
-    ROUND(NULLIF(rider_penalized_amount, 0)::numeric, 2) as rider_penalized_amount,
+    ROUND(NULLIF(rider_penalized_amount, 0)::numeric, 2) as rider_penalized_amount
     --chat_url,
     --product_id,
     --promotion_id
