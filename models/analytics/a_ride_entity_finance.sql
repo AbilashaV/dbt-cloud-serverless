@@ -4,6 +4,7 @@ select distinct
     create_time_local,
     car_type,
     coupon_code,
+    --promotion_id,
     sum(creator_system_fee) as creator_system_fee,
     sum(creator_system_fee_tax) as creator_system_fee_tax,
     credit_card_id,

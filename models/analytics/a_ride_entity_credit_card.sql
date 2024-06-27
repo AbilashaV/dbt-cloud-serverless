@@ -4,6 +4,8 @@ select
     create_time_local,
     car_type,
     coupon_code,
+    --promotion_id,
+    --product_id,
     creator_system_fee,
     creator_system_fee_tax,
     re.credit_card_id,
