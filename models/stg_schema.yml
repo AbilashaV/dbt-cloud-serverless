@@ -1,0 +1,400 @@
+version: 2
+
+models:
+  - name: stg_ride_entity
+    description: Raw ride entity table with Ride information; no formatting
+    columns:
+      - name: id
+        description: Unique ride ID
+        tests:
+          - unique
+          - not_null
+      - name: app_meter
+        description: Meter flag
+      - name: assign_time
+        description: Date time when the driver accepts the ride (in UTC)
+      - name: assigned_point
+        description: Geometry point assigned for the ride
+      - name: cancel_reason
+        description: Reason for ride cancellation
+      - name: cancel_reason_type
+        description: Type of ride cancellation; enum
+      - name: car_type
+        description: Type of car; enum
+      - name: car_types
+        description: Car types in JSON format
+      - name: cashout_request_id
+        description: Does the driver cash out during a trip?
+      - name: chat_url
+        description: Chat ID for the ride
+      - name: city
+        description: 3 letter city code
+        tests:
+          - accepted_values:
+              values: ['BKK', 'HAN', 'HCM', 'PNH', 'REP', 'SEL', 'SHV', 'SIN']
+      - name: company_id
+        description: Company ID
+      - name: coupon_code
+        description: Coupon code if any
+      - name: create_time
+        description: Date time when the ride is created or started in UTC
+        tests:
+          - not_null
+      - name: credit_card_id
+        description: Credit card ID - unique id
+      - name: currency
+        description: Currency code
+      - name: destination_point
+        description: Geometry point for the destination
+      - name: discount
+        description: Discount on the ride when a coupon is applied; in local currency as per the region
+      - name: dispatch_config_id
+        description: Dispatch configuration ID
+      - name: driver_application_fee
+        description: Driver application, tax, or credit card application fee; in local currency as per the region
+      - name: driver_info
+        description: Driver details in JSON format
+      - name: driver_rated
+        description: Indicates if the driver was rated
+      - name: driver_uuid
+        description: Driver unique ID
+      - name: drop_off_time
+        description: Date time of the drop-off in UTC
+      - name: estimated_price
+        description: Estimated rate or price of the ride; in local currency as per the region
+      - name: etc_fee
+        description: Other fees such as driver additional fee; in local currency as per the region
+      - name: pay_status
+        description: Payment status; enum
+        tests:
+          - accepted_values:
+              values: ['0', '5', '20', '10', '90', '100', '900', '910', '920']
+      - name: payment_method
+        description: Payment method; enum
+      - name: pick_up_address
+        description: Pick-up address
+      - name: pick_up_arrived_time
+        description: Pick-up arrival date time
+      - name: pick_up_distance_km
+        description: Distance to the pickup from driver current location in km
+      - name: pick_up_name
+        description: Pick-up name
+      - name: pick_up_point
+        description: Geometry point for the pick-up
+      - name: pick_up_start_time
+        description: Pick-up start date time
+      - name: pick_up_zone_id
+        description: Pick-up zone ID; enum
+      - name: qr_code
+        description: QR code
+      - name: qr_text
+        description: QR text
+      - name: refund_amount
+        description: Refund amount when the ride was refunded in local currency as per the region
+      - name: region
+        description: Region
+      - name: ride_distance_km
+        description: Total ride distance in km
+      - name: ride_distance_update_time
+        description: Date time when ride distance was updated
+      - name: ride_price
+        description: Ride price, fare, or rate; in local currency as per the region
+        tests:
+          - not_null
+      - name: ride_status
+        description: Status of the ride; '{{ doc("ride_status") }}'
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['10', '12', '15', '20', '40', '50', '55', '60', '65', '70', '100', '300', '310', '400']
+      - name: rider_application_fee
+        description: Rider application, tax, or credit card application fee; in local currency as per the region
+      - name: rider_info
+        description: Rider details in JSON format
+      - name: rider_note
+        description: Rider note
+      - name: rider_rated
+        description: Indicates if the rider was rated
+      - name: rider_uuid
+        description: Rider unique id
+      - name: sd
+        description: SD field
+      - name: start_time
+        description: Date time of start of the ride in UTC
+      - name: toll_fee
+        description: Toll fee or rate; in local currency as per the region
+      - name: way_point
+        description: Geometry way points for the ride
+      - name: product_id
+        description: Product ID
+      - name: fraud
+        description: Indicates if the ride was fraudulent
+      - name: map_matched_distance_km
+        description: Map matched distance in km
+      - name: destination_zone_id
+        description: Destination zone ID
+      - name: equipments
+        description: Details like car seat, etc.
+      - name: ride_type
+        description: Type of ride; '{{ doc("ride_type") }}'
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['0', '10', '100', '20', '1']
+      - name: target_point_list
+        description: Geometry points list to identify number of drop-offs in a ride
+      - name: way_point_list
+        description: Geometry way points list
+      - name: estimated_distance_km
+        description: Estimated distance in km
+      - name: price_distance_modifier
+        description: Price distance modifier
+      - name: ad
+        description: Auto dispatch
+      - name: destination
+        description: Destination details in JSON format
+      - name: pick_up
+        description: Pick-up details in JSON format
+      - name: target_points
+        description: Target points in JSON format
+      - name: additional_fares
+        description: Additional fares
+      - name: ride_option_fee
+        description: Option fees such as car seat, smart call
+      - name: branch_id
+        description: Branch ID
+      - name: corporate_id
+        description: Corporate ID
+      - name: department_id
+        description: Department ID
+      - name: mdt
+        description: Meter flag
+      - name: payment_method_group
+        description: Payment method group
+      - name: driver_system_fee
+        description: Driver system fee
+      - name: rider_system_fee
+        description: Rider system fee
+      - name: assigned_point_h3_address
+        description: Assigned point H3 address
+      - name: destination_h3_address
+        description: Destination H3 address
+      - name: pick_up_h3_address
+        description: Pick-up H3 address
+      - name: corp_onetime_code
+        description: Corporate one-time code
+      - name: creator_info
+        description: Creator info in JSON format for delivery
+      - name: creator_uuid
+        description: Creator unique ID for delivery sender
+      - name: estimated_pick_up_distance_km
+        description: Estimated pick-up distance in km
+      - name: driver_replied_eta
+        description: Driver replied ETA
+      - name: car_info
+        description: Car info in JSON format
+      - name: simple_id
+        description: Simple ID
+      - name: accident
+        description: Indicates if there was an accident
+      - name: driver_insurance_company_name
+        description: Driver insurance company name (Not populated in ride_entity)
+      - name: driver_insurance_fee
+        description: Driver insurance fee (Not populated in ride_entity)
+      - name: driver_insurance_name
+        description: Driver insurance name (Not populated in ride_entity)
+      - name: point_transaction_id
+        description: Point transaction ID
+      - name: used_point
+        description: Used point
+      - name: driver_cancellation_fee
+        description: Driver cancellation fee
+      - name: rider_cancellation_fee
+        description: Rider cancellation fee
+      - name: pick_up_postal_code
+        description: Pick-up address postal code (No postal code populated)
+      - name: destination_postal_code
+        description: Destination address postal code
+      - name: business_purpose
+        description: Indicates if the ride was for business purpose
+      - name: rider_cancellation_reward
+        description: Rider cancellation reward
+      - name: driver_cancellation_reward
+        description: Driver cancellation reward
+      - name: driver_point_payment_amount
+        description: Driver point payment amount
+      - name: driver_point_transaction_id
+        description: Driver point transaction ID
+      - name: reservation_ride_start_time
+        description: Start time of the ride through reservation
+      - name: reservation_fee
+        description: Booking fee for an advanced ride
+      - name: driver_penalty_fee
+        description: Driver penalty fee
+      - name: ride_type_data
+        description: Ride type data in JSONB format
+      - name: rider_system_fee_tax
+        description: Rider system fee tax
+      - name: driver_system_fee_tax
+        description: Driver system fee tax
+      - name: creator_system_fee
+        description: Creator system fee for delivery
+      - name: creator_system_fee_tax
+        description: Creator system fee tax for delivery
+      - name: pick_up_h3_res15
+        description: Pick-up H3 resolution 15
+      - name: destination_h3_res15
+        description: Destination H3 resolution 15
+      - name: confirm_time
+        description: Confirmation time
+      - name: pick_up_arrived_point
+        description: Geometry point of pick-up arrival
+      - name: pick_up_arrived_point_h3_address
+        description: Pick-up arrived point H3 address
+      - name: target_points_zone_id
+        description: Target points zone ID in JSONB format
+      - name: target_points_h3_address
+        description: Target points H3 address in JSONB format
+      - name: previous_ride_id
+        description: Previous ride ID
+      - name: payment_item_uuid
+        description: Credit card entity UUID for SG or aba_account_summary ID for KH
+      - name: mdd
+        description: My driver destination
+      - name: rider_penalized_amount
+        description: Rider penalized amount
+
+
+  - name: stg_credit_card_entity
+    description: Table containing credit card information with details about the card, user, and associated metadata.
+    columns:
+      - name: id
+        description: Credit card ID
+      - name: card_brand
+        description: Credit card brand (e.g., MasterCard, Visa, American Express)
+      - name: card_last4
+        description: Last 4 digits of the credit card number
+      - name: country
+        description: Country associated with the credit card
+      - name: created_at
+        description: Date and time when the credit card details were created in UTC
+        tests:
+          - not_null
+      - name: customer_id
+        description: ID of the Stripe customer associated with the credit card
+      - name: default_selected
+        description: Indicates if the credit card is the default selected card
+      - name: deleted_at
+        description: Date and time when the credit card was deleted in UTC
+      - name: exp_month
+        description: Credit card expiry month
+      - name: exp_year
+        description: Credit card expiry year
+      - name: fingerprint
+        description: Fingerprint of the credit card
+      - name: fraud
+        description: Indicates if the credit card is flagged for fraud
+      - name: gateway
+        description: Credit card gateway
+      - name: issuer
+        description: Credit card issuer
+      - name: source_id
+        description: ID of the Stripe payment method entity associated with the credit card
+      - name: threedsecured
+        description: Indicates if 3D secure is enabled for the credit card
+      - name: updated_at
+        description: Date and time when the credit card details were last updated in UTC
+      - name: user_id
+        description: User ID associated with the credit card
+      - name: user_uuid
+        description: Unique user ID (rider ID) associated with the credit card
+      - name: uuid
+        description: Unique payment UUID (credit card UUID for SG; ABA payment UUID for KH)
+      - name: user_ip
+        description: IP address of the user associated with the credit card
+      - name: threedsecure_version
+        description: Version of 3D secure used for the credit card
+      - name: auth_flow_type
+        description: Authentication flow type for the credit card
+      - name: bin
+        description: Bank Identification Number (BIN) of the credit card
+      - name: corporate_id
+        description: Corporate ID associated with the credit card
+
+
+  - name: stg_transactions
+    description: Table containing transaction details for various account types including drivers, riders, and delivery vendors.
+    columns:
+      - name: account_id
+        description: UUID of the driver or rider
+        tests:
+          - not_null
+      - name: idempotency_key
+        description: Key to ensure idempotency of transactions
+      - name: created_at
+        description: Date and time when the transaction was created in UTC
+        tests:
+          - not_null
+      - name: updated_at
+        description: Date and time when the transaction was last updated in UTC
+        tests:
+          - not_null
+      - name: last_event_id
+        description: ID of the associated transaction event entity
+      - name: account_model
+        description: Account model (Driver, Rider, DeliveryVendor)
+      - name: amount
+        description: Transaction amount
+        data_type: numeric(19,2)
+      - name: channel
+        description: Transaction channel (e.g., ABA, ADMIN, BANK, etc.)
+      - name: channel_account_name
+        description: Name of the channel account
+      - name: channel_identifier
+        description: Identifier for the channel
+      - name: channel_name
+        description: Name of the channel
+      - name: currency
+        description: Currency used in the transaction
+      - name: description
+        description: Description of the transaction
+      - name: discount
+        description: Discount applied to the transaction
+        data_type: numeric(19,2)
+      - name: fraud
+        description: Fraud status of the transaction (900 - FRAUD, 10 - NON_FRAUD, 1 - NOT_CHECKED)
+        data_type: int4
+      - name: payment_method
+        description: Payment method used in the transaction (e.g., 0 = Cash, 1 = QR, etc.)
+        data_type: int4
+      - name: region
+        description: Region of the transaction
+      - name: status
+        description: Status of the transaction (900 - Rejected, 999 - Failed, 10 - Under Review / Pending, 20 - Approved / Processed)
+        data_type: int4
+      - name: type
+        description: Type of transaction (10 - Ride, 20 - Top Up, 30 - Cashout, 40 - Deduct)
+        data_type: int4
+      - name: unpaid_amount
+        description: Unpaid amount in the transaction
+        data_type: numeric(19,2)
+      - name: cash_out_synced_on_shb
+        description: Cash out synced on SHB status
+        data_type: int4
+      - name: shb_detached
+        description: SHB detached status
+        data_type: bool
+      - name: admin_topup_category
+        description: Admin top-up category
+      - name: reason
+        description: Reason for the transaction
+      - name: category_type
+        description: Category type of the transaction
+        data_type: int4
+      - name: external_transaction_id
+        description: External transaction ID
+      - name: display_description_key
+        description: Display description key for the transaction
+      - name: metadata
+        description: Additional metadata for the transaction
+        data_type: jsonb

@@ -1,0 +1,175 @@
+version: 2
+
+models:
+  - name: c_ride_entity
+    description: Cleansed ride entity table with Ride information; includes formatting and transformations applied; - local time added; numeric formats are aligned with 2 decimals, only those fields which are majorly used.  
+    columns:
+      - name: ride_id
+        description: Primary key for a ride/order
+        tests:
+          - unique
+          - not_null
+      - name: assign_time_utc
+        description: Date time when the driver accepts the ride in UTC
+      - name: assign_time_local
+        description: Date time when the driver accepts the ride in local timezone
+      - name: cancel_reason
+        description: Reason for ride cancellation
+      - name: cancel_reason_type
+        description: Type of ride cancellation; enum
+      - name: car_type
+        description: Type of car; enum
+      - name: city
+        description: 3 letter city code
+      - name: company_id
+        description: Company ID
+      - name: coupon_code
+        description: Coupon code if any
+      - name: create_time_utc
+        description: Date time when the ride is created or started in UTC
+        tests:
+          - not_null
+      - name: create_time_local
+        description: Date time when the ride is created or started in local timezone
+      - name: credit_card_id
+        description: Credit card ID - unique id
+      - name: currency
+        description: Currency code
+      - name: discount
+        description: Discount on the ride when a coupon is applied; in local currency as per the region
+      - name: driver_application_fee
+        description: Driver application, tax, or credit card application fee; in local currency as per the region
+      - name: driver_info
+        description: Driver details in JSON format
+      - name: drop_off_time_utc
+        description: Drop-off time in UTC
+      - name: drop_off_time_local
+        description: Drop-off time in local timezone
+      - name: estimated_price
+        description: Estimated rate or price of the ride; in local currency as per the region
+      - name: etc_fee
+        description: Other fees such as driver additional fee; in local currency as per the region
+      - name: pay_status
+        description: Payment status; enum
+      - name: payment_method
+        description: Payment method; enum
+      - name: pick_up_arrived_time_utc
+        description: Pick-up arrival date time in UTC
+      - name: pick_up_arrived_time_local
+        description: Pick-up arrival date time in local timezone
+      - name: pick_up_distance_km
+        description: Distance to the pickup from driver current location in km
+      - name: pick_up_start_time_utc
+        description: Pick-up start date time in UTC
+      - name: pick_up_start_time_local
+        description: Pick-up start date time in local timezone
+      - name: pick_up_zone_id
+        description: Pick-up zone ID; enum
+      - name: refund_amount
+        description: Refund amount when the ride was refunded in local currency as per the region
+      - name: region
+        description: Region
+      - name: ride_distance_km
+        description: Total ride distance in km
+      - name: ride_price
+        description: Ride price, fare, or rate; in local currency as per the region
+      - name: ride_status
+        description: Status of the ride
+        tests:
+          - not_null
+      - name: rider_application_fee
+        description: Rider application, tax, or credit card application fee; in local currency as per the region
+      - name: rider_info
+        description: Rider details in JSON format
+      - name: driver_uuid
+        description: Driver unique ID
+      - name: rider_uuid
+        description: Rider unique ID
+      - name: sd
+        description: SD field
+      - name: start_time_utc
+        description: Date time of start of the ride in UTC
+      - name: start_time_local
+        description: Date time of start of the ride in local timezone
+      - name: toll_fee
+        description: Toll fee or rate; in local currency as per the region
+      - name: way_point
+        description: Geometry way points for the ride
+      - name: fraud
+        description: Indicates if the ride was fraudulent
+      - name: destination_zone_id
+        description: Destination zone ID
+      - name: equipments
+        description: Details like car seat, etc.
+      - name: ride_type
+        description: Type of ride; enum
+      - name: estimated_distance_km
+        description: Estimated distance in km
+      - name: ad
+        description: Auto dispatch
+      - name: destination
+        description: Destination details in JSON format
+      - name: pick_up
+        description: Pick-up details in JSON format
+      - name: additional_fares
+        description: Additional fares
+      - name: ride_option_fee
+        description: Option fees such as car seat, smart call
+      - name: corporate_id
+        description: Corporate ID
+      - name: mdt
+        description: Meter flag
+      - name: driver_system_fee
+        description: Driver system fee
+      - name: rider_system_fee
+        description: Rider system fee
+      - name: destination_h3_address
+        description: Destination H3 address
+      - name: pick_up_h3_address
+        description: Pick-up H3 address
+      - name: creator_info
+        description: Creator info in JSON format for delivery
+      - name: creator_uuid
+        description: Creator unique ID for delivery sender
+      - name: estimated_pick_up_distance_km
+        description: Estimated pick-up distance in km
+      - name: accident
+        description: Indicates if there was an accident
+      - name: driver_cancellation_fee
+        description: Driver cancellation fee
+      - name: rider_cancellation_fee
+        description: Rider cancellation fee
+      - name: rider_cancellation_reward
+        description: Rider cancellation reward
+      - name: driver_cancellation_reward
+        description: Driver cancellation reward
+      - name: reservation_ride_start_time_utc
+        description: Start time of the ride through reservation in UTC
+      - name: reservation_ride_start_time_local
+        description: Start time of the ride through reservation in local timezone
+      - name: reservation_fee
+        description: Booking fee for an advanced ride
+      - name: driver_penalty_fee
+        description: Driver penalty fee
+      - name: rider_system_fee_tax
+        description: Rider system fee tax
+      - name: driver_system_fee_tax
+        description: Driver system fee tax
+      - name: creator_system_fee
+        description: Creator system fee for delivery
+      - name: creator_system_fee_tax
+        description: Creator system fee tax for delivery
+      - name: pick_up_h3_res15
+        description: Pick-up H3 resolution 15
+      - name: destination_h3_res15
+        description: Destination H3 resolution 15
+      - name: confirm_time_utc
+        description: Confirmation time in UTC
+      - name: confirm_time_local
+        description: Confirmation time in local timezone
+      - name: payment_item_uuid
+        description: Credit card entity UUID for SG or aba_account_summary ID for KH
+      - name: mdd
+        description: My driver destination
+      - name: rider_penalized_amount
+        description: Rider penalized amount
