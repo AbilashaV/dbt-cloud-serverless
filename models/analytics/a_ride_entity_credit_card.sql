@@ -6,6 +6,7 @@
 }}
 
 
+with rides_ as (
 select
     create_time_local,
     car_type,
@@ -55,11 +56,14 @@ left join
     on (re.credit_card_id = cce.credit_card_id or re.payment_item_uuid = cce.uuid)
 
 where 
-re.payment_method = 'CREDITCARD' 
-and re.region ='SG'
-and re.ride_status = 'FINISHED'
-and EXTRACT(YEAR FROM create_time_local::timestamp) = 2024 
-and EXTRACT(MONTH FROM create_time_local::timestamp) = 5
+    re.payment_method = 'CREDITCARD' 
+    and re.region ='SG'
+    and re.ride_status = 'FINISHED'
+    and EXTRACT(YEAR FROM create_time_local::timestamp) = 2024 
+    and EXTRACT(MONTH FROM create_time_local::timestamp) = 5
+)
+
+select * from rides_
 
 {% if is_incremental() %}
 

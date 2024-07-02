@@ -1,0 +1,11 @@
+name,value,request_pay_service,cashout_available
+CASH,0,false,false
+PAO,1,true,true
+ALIPAY_P,2,true,true
+PIPAY_P,3,true,true
+MOMOPAY_P,4,true,true
+CREDITCARD,5,false,true
+TADAPAY,6,false,true
+CORPORATE,7,false,true
+CMCB,8,true,true
+DELIVERY,9,false,true

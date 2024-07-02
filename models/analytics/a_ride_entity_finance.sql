@@ -1,5 +1,12 @@
-{{ config(materialized="table") }}
 
+{{ 
+    config(
+        materialized='incremental',
+        unique_key ='ride_id'
+        ) 
+}}
+
+with ride_ as (
 select distinct
     create_time_local,
     car_type,
@@ -92,4 +99,13 @@ create_time_local,
     ride_type,
 rider_uuid,
 driver_cancellation_reward
+)
 
+select * from ride_
+
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  -- (uses >= to include records whose timestamp occurred since the last run of this model)
+  where create_time_local >= (select max(create_time_local)from {{ this }})
+{% endif %}
