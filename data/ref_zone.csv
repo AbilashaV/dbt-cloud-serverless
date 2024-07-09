@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 value,name,rgname
 3,CBD,Town
 4,Tanjong Pagar,Town
@@ -29,3 +30,36 @@ value,name,rgname
 30,Seletar,N.East
 344,Hougang,N.East
 350,Jurong West,West
+=======
+value,name,rgname
+3,CBD,Town
+4,Tanjong Pagar,Town
+5,Central South,Town
+6,Telok Blangah,Town
+7,Buona Vista,Town
+8,City Hall,Town
+9,Beach Road,Town
+10,Little India,Town
+11,Orchard,Town
+12,Tanglin,Town
+13,Macpherson,Central
+14,Eunos,East
+15,Novena,Town
+16,Toa Payoh,Central
+17,Katong,East
+18,Bedok,East
+19,Airport,East
+20,Tampines,East
+21,Punggol,N.East
+22,Ang Mo Kio,Central
+23,Bukit Timah,West
+24,Jurong,West
+25,Choa Chu Kang,West
+26,Kranji,West
+27,Woodlands,North
+28,Lentor,North
+29,Yishun,North
+30,Seletar,N.East
+344,Hougang,N.East
+350,Jurong West,West
+>>>>>>> 07f2a62337cc613ec5d7adbc6b8211f14747af39

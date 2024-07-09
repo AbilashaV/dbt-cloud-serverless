@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 value,name
 1,Rider_Too_Far
 2,Too_Long_Pickup
@@ -18,3 +19,25 @@ value,name
 404,Too_Many_Riders
 999,Others
 null,Empty_Reason
+=======
+value,name
+1,Rider_Too_Far
+2,Too_Long_Pickup
+3,Vehicle_Broke_Down
+4,Driver_Mistaken_Accepted
+5,Rider_Ask_To_Cxl
+6,Rider_No_Show
+7,Rider_With_Child
+8,Rider_Wrong_Pickup
+9,Rider_Wrong_Dropoff
+10,Driver_Unavailable
+11,Driver_Ignore_AD
+12,Rider_Items_Cannot_Fit
+13,Rider_With_Pet
+401,Rider_Refuse_To_Cancel
+402,Rider_Has_Too_Many_Luggages
+403,Rider_Refuse_To_Wear_Mask
+404,Too_Many_Riders
+999,Others
+null,Empty_Reason
+>>>>>>> 07f2a62337cc613ec5d7adbc6b8211f14747af39
