@@ -28,12 +28,13 @@ cce.updated_at::timestamp as updated_at_utc,
 (cce.updated_at::timestamp+ interval '1 hour' * rg.timezone) as updated_at_local,
 --user_id
 user_uuid,
-uuid
+uuid,
 --user_ip
 --threedsecure_version?
 --auth_flow_type
 --bin
---corporate_id
+corporate_id,
+is_expired
 from {{ ref("stg_credit_card_entity")}}  cce
 join {{ ref("ref_regions") }} rg on cce.country = rg.country
 
