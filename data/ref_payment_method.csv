@@ -22,4 +22,10 @@ TADAPAY,6,false,true
 CORPORATE,7,false,true
 CMCB,8,true,true
 DELIVERY,9,false,true
+<<<<<<< HEAD
 >>>>>>> 07f2a62337cc613ec5d7adbc6b8211f14747af39
+=======
+NETSQR,12,false,false
+OCBC_PAY_ANYONE,13,false,false
+CORPORATE_CARD,16,false,false
+>>>>>>> 69f8595124118e737b3a765ad5b9349f22bed6f8
