@@ -1,6 +1,7 @@
 {{ 
     config(
-        materialized='table'
+        materialized='incremental',
+        unique_key ='account_id'
         ) 
 }}
 
@@ -20,7 +21,7 @@ select
     -- channel_identifier?
     -- channel_name
     currency,
-    -- description
+    description,
     --CAST(discount As float) as discount,
     ROUND(NULLIF(discount::numeric(19,2), 0), 2) as discount,
     fraud,
@@ -29,18 +30,26 @@ select
     ts.name as transaction_status,
     tt.name as transaction_type,
     --cast(unpaid_amount AS float) as unpaid_amount,
-    ROUND(NULLIF(unpaid_amount::numeric(19,2), 0), 2) as unpaid_amount
+    ROUND(NULLIF(unpaid_amount::numeric(19,2), 0), 2) as unpaid_amount,
 -- cash_out_synced_on_shb
 -- shb_detached
 -- admin_topup_category
 -- reason
 -- category_type                              
 -- external_transaction_id
--- display_description_key
--- metadata
+display_description_key,
+metadata
 from {{ ref("stg_transactions") }} tr
 join {{ ref("ref_regions") }} rg on tr.region = rg.country
 
 left join {{ ref("ref_payment_method") }} pmt on tr.payment_method = pmt.value
 left join {{ ref("ref_transaction_type") }} tt on tr.type = tt.value
 left join {{ ref("ref_transaction_status") }} ts on tr.status = ts.value
+
+
+{% if is_incremental() %}
+
+  -- this filter will only be applied on an incremental run
+  -- (uses >= to include records whose timestamp occurred since the last run of this model)
+  where created_at_utc >= (select max(created_at_utc)from {{ this }})
+{% endif %}
