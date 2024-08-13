@@ -1,3 +1,3 @@
-select *
-from   
-"dev"."tada_alipay_service"."credit_card_entity"
+SELECT * 
+FROM 
+--{{source('ride_','transactions')}}
