@@ -1,2 +1,3 @@
 select *
-from   {{ source("ride_", "credit_card_entity") }}
+from   
+"dev"."tada_alipay_service"."credit_card_entity"
