@@ -2,9 +2,11 @@
 {{
     config(
         materialized="incremental",
-        unique_key ='ride_id'
+        unique_key='ride_id',
+        incremental_strategy='delete+insert'
     )
 }}
+
 
 with _ridefinance as (
 select distinct
@@ -104,7 +106,6 @@ driver_cancellation_reward
 select * from _ridefinance
 
 {% if is_incremental() %}
-  -- this filter will only be applied on an incremental run
-  -- (uses >= to include records whose timestamp occurred since the last run of this model)
-  where create_time_local >= (select max(create_time_local)from {{ this }})
+  -- This filter will be applied only on an incremental run
+  where create_time_utc >= current_date - interval '2 days'
 {% endif %}
