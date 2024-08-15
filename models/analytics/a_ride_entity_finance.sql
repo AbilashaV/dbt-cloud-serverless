@@ -80,7 +80,7 @@ select distinct
         )::float
     ) as total_amount_owed_to_drivers
 
-from {{ ref("c_ride_entity_incremental") }} re
+from {{ ref("c_ride_entity") }} re
 where 
 re.rider_uuid is not null
 and re.driver_uuid is not null
